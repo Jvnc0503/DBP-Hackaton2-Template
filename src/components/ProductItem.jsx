@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { fetchPutItem, fetchDeleteItem } from '../api';
 
 const ProductItem = ({ id, name: initialName, description: initialDescription, price: initialPrice, onProductChange }) => {
-  // Inicializar el estado
   const [name, setName] = useState(initialName);
   const [description, setDescription] = useState(initialDescription);
   const [price, setPrice] = useState(initialPrice);
@@ -15,11 +14,10 @@ const ProductItem = ({ id, name: initialName, description: initialDescription, p
     if (newName && newDescription && newPrice) {
       try {
         await fetchPutItem(id, { name: newName, description: newDescription, price: newPrice });
-        // Actualizar el estado local después de la edición exitosa
         setName(newName);
         setDescription(newDescription);
         setPrice(newPrice);
-        onProductChange(); // Notifica al componente padre para que actualice la lista de productos
+        onProductChange();
       } catch (error) {
         console.error('Error editando el producto:', error);
       }
@@ -29,7 +27,7 @@ const ProductItem = ({ id, name: initialName, description: initialDescription, p
   const handleDelete = async () => {
     try {
       await fetchDeleteItem(id);
-      onProductChange(); // Notifica al componente padre para que actualice la lista de productos
+      onProductChange(); 
     } catch (error) {
       console.error('Error borrando el producto:', error);
     }
