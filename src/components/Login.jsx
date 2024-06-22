@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 const Login = () =>{
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [role, setRole] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (e) =>{
@@ -45,15 +44,6 @@ const Login = () =>{
                 />
             </label>
             <br/>
-            <label htmlFor="role">Role:
-                <input
-                    type="text"
-                    id="role"
-                    value={role}
-                    onChange={(e) => setRole(e.target.value)}
-                    required
-                />
-            </label>
             <button type="submit">Submit</button>
         </form>
     );
