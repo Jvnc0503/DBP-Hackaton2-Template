@@ -3,17 +3,15 @@ import { fetchRegister } from "../api";
 import { useNavigate } from "react-router-dom";
 
 const Register = () =>{
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [isAdmin, setIsAdmin] = useState(false);
+    const [role, setRole] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
         try{
-            const res = await fetchRegister({firstName, lastName, email, password});
+            const res = await fetchRegister({username, password, role});
             console.log(res);
             alert('Register successful');
             navigate('/');
@@ -24,35 +22,19 @@ const Register = () =>{
         }
     }
 
+    const handleRole = (e) => {
+        setRole(e.target.checked ? 'ROLE_ADMIN' : 'ROLE_USER');
+    };
+
     return(
         <form onSubmit={handleSubmit}>
             <div>Register</div>
-            <label htmlFor="firstName">First Name:
+            <label htmlFor="username">Username
                 <input
                     type="text"
-                    id="firstName"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                    required
-                />
-            </label>
-            <br/>
-            <label htmlFor="lastName">Last Name:
-                <input
-                    type="text"
-                    id="lastName"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                    required
-                />
-            </label>
-            <br/>
-            <label htmlFor="email">Email:
-                <input
-                    type="email"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    id="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                     required
                 />
             </label>
@@ -64,6 +46,15 @@ const Register = () =>{
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
+                />
+            </label>
+            <br/>
+            <label htmlFor="isAdmin">Is Admin:
+                <input
+                    type="checkbox"
+                    id="isAdmin"
+                    checked={role}
+                    onChange={handleRole}
                 />
             </label>
             <br/>
