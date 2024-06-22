@@ -18,7 +18,7 @@ const NavBar = () =>{
                     <Link to="/">Placeholder</Link>
                 </li>
                 <li>
-                    <Link to="/">Placeholder</Link>
+                    <Link to="/logout">Logout</Link>
                 </li>
             </ul>
         </nav>

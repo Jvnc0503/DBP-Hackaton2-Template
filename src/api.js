@@ -32,6 +32,6 @@ export const fetchRegister = async (body) =>{
     return response.data;
 }
 
-export const fetchLogout = async () =>{
+export const fetchLogout = () =>{
     localStorage.removeItem('token');
 }

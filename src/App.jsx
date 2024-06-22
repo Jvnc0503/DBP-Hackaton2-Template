@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import NavBar from './components/NavBar';
 import Login from './components/Login';
 import Register from './components/Register';
+import Logout from './components/Logout';
 
 const Home = () =>{
   return <h2>Welcome to the home page</h2>
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
+        <Route path="/logout" element={<Logout/>}/>
       </Routes>
     </Router>
   )
