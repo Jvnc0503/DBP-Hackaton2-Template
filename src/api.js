@@ -45,7 +45,7 @@ export const fetchLogout = () =>{
 }
 
 export const fetchCreateItem = async (body) =>{
-    const response = await axios.post(`${URL}/items`, body, {
+    const response = await axios.post(`${URL}/item`, body, {
         headers:{
             Authorization: `Bearer ${getToken()}`
         }
@@ -55,7 +55,7 @@ export const fetchCreateItem = async (body) =>{
 }
 
 export const fetchPutItem = async (body) =>{
-    const response = await axios.put(`${URL}/items`, body, {
+    const response = await axios.put(`${URL}/item`, body, {
         headers:{
             Authorization: `Bearer ${getToken()}`
         }
@@ -64,7 +64,7 @@ export const fetchPutItem = async (body) =>{
 }
 
 export const fetchDeleteItem = async (id) =>{
-    const response = await axios.delete(`${URL}/items/${id}`, {
+    const response = await axios.delete(`${URL}/item/${id}`, {
         headers:{
             Authorization: `Bearer ${getToken()}`
         }
@@ -73,7 +73,7 @@ export const fetchDeleteItem = async (id) =>{
 }
 
 export const fetchGetItem = async (id) =>{
-    const response = await axios.get(`${URL}/items/${id}`, {
+    const response = await axios.get(`${URL}/item/${id}`, {
         headers:{
             Authorization: `Bearer ${getToken()}`
         }
