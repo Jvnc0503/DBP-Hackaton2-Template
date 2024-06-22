@@ -84,7 +84,7 @@ export const fetchGetItem = async (id) =>{
 export const fetchGetItems = async (limit, lastKey) =>{
     const response = await axios.get(`${URL}/items?limit=${limit}&lastKey=${lastKey}`);
     console.log(response.data);
-    return response.data.lastKey;
+    return response.data;
 }
 
 export const fetchBuy = async (body) =>{

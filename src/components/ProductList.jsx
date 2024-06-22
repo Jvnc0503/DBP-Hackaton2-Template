@@ -4,12 +4,14 @@ import Product from './Product';
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
+  const [lastKey, setLastKey] = useState(null);
 
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const fetchedProducts = await fetchGetItems();
-        setProducts(fetchedProducts);
+        const res = await fetchGetItems(50, lastKey);
+        setLastKey(res.lastKey)
+        setProducts(res.items);
       } catch (error) {
         console.error('Failed to fetch products:', error);
       }
@@ -23,9 +25,10 @@ const ProductList = () => {
       {products.length > 0 ? (
         products.map(product => (
           <Product
-            key={product.id}
-            name={product.name}
-            description={product.description}
+            key={product.asin}
+            imageUrl={product.imgUrl}
+            name={product.title}
+            stars={product.stars}
             price={product.price}
           />
         ))
