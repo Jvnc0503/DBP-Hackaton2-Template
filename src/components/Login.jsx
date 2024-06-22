@@ -3,14 +3,15 @@ import { fetchLogin } from '../api';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () =>{
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [role, setRole] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
         try{
-            const res = await fetchLogin({email, password});
+            const res = await fetchLogin({email: username, password});
             console.log(res);
             alert('Login successful');
             navigate('/');
@@ -28,8 +29,8 @@ const Login = () =>{
                 <input
                     type="email"
                     id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
                     required
                 />
             </label>
@@ -44,6 +45,15 @@ const Login = () =>{
                 />
             </label>
             <br/>
+            <label htmlFor="role">Role:
+                <input
+                    type="text"
+                    id="role"
+                    value={role}
+                    onChange={(e) => setRole(e.target.value)}
+                    required
+                />
+            </label>
             <button type="submit">Submit</button>
         </form>
     );
