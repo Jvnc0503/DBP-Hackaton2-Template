@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchProducts } from '../api'; // Asume que esta función está implementada
+import { fetchProducts as fetchGetProducts } from '../api'; // Asume que esta función está implementada
 import Product from './Product';
 
 const ProductList = () => {
@@ -8,7 +8,7 @@ const ProductList = () => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const fetchedProducts = await fetchProducts();
+        const fetchedProducts = await fetchGetProducts();
         setProducts(fetchedProducts);
       } catch (error) {
         console.error('Failed to fetch products:', error);
