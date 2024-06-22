@@ -43,6 +43,7 @@ const Login = () =>{
                     required
                 />
             </label>
+            <br/>
             <button type="submit">Submit</button>
         </form>
     );
