@@ -10,7 +10,7 @@ const Login = () =>{
     const handleSubmit = async (e) =>{
         e.preventDefault();
         try{
-            const res = await fetchLogin({email: username, password});
+            const res = await fetchLogin({username, password});
             console.log(res);
             alert('Login successful');
             navigate('/');
@@ -24,10 +24,10 @@ const Login = () =>{
     return(
         <form onSubmit={handleSubmit}>
             <div>Login</div>
-            <label htmlFor="email">Email:
+            <label htmlFor="username">Username
                 <input
-                    type="email"
-                    id="email"
+                    type="text"
+                    id="username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
